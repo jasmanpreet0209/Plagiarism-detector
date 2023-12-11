@@ -1,0 +1,13 @@
+The algorithm is a plagiarism detector that checks for plagiarism in text files. The text files can contain some regular text or source code as well. The algorithm first reads the two input files given as input by the user. The algorithm is then divided into two parts. 
+It works separately for text and for source code. 
+
+There is a defined list of keywords that contains some common keywords that are present in source code of different languages. The algorithm tries to identify these keywords in the text file. If the keywords are detected above a certain threshold, then the algorithm labels the file as source code file. 
+If the detected file is not a source code file, then the algorithm checks for some keywords that help detect if a reference or citation is present in the file. The keywords for checking references are defined in the string array – reference_keywords. It contains strings like “Wikipedia”, “author”, “edition” etc
+
+In case references are detected in both the files, then the algorithm labels files as not plagiarized since references are present. Else the files are sent for preprocessing to be further checked for plagiarism. The preprocessing function takes as input a file and removes all the unnecessary characters like punctuation, numbers, extra white spaces, duplicate words, converts the file into lowercase and sorts the unique remaining words based alphabetically.
+
+After preprocessing is done on both files, edit distance is calculated on the resultant preprocessed strings. Edit distance is the minimum number of operations required to convert a string to another. The lesser the edit distance, more the plagiarism since it means very smaller number of operations are required to convert two strings into each other as they are already similar. If edit distance is lesser than a certain threshold, then algorithm returns 1 – which means that content is plagiarized. Else It returns 0.
+
+In the case when source code is detected, the source code pre processing is done where all the keywords defined in the list for detection of source code are removed. The characters like ++, -- are removed and the unique words in the source code except for the brackets, and basic preprocessing is done. Extra white spaces are also removed. Only unique words are retained. Then the edit distance is calculated and again, if the source code files after preprocessing have an edit distance less than a threshold, it means the code is plagiarized.
+
+
